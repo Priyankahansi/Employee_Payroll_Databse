@@ -22,7 +22,15 @@ public class EmployeeDB {
             con = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("connection done successful!!" + con);
             Statement statement=con.createStatement();
-            //statement.executeUpdate("update addressBook set Type='Family,Friend' where firstname='Paarth' ");
+//            statement.execute("create table employee(id int auto_increment,name varchar(30),\n" +
+//                    "salary double,department varchar(30),Joining_Date date,\n" +
+//                    "primary key(id))");
+            statement.execute("insert into employee(name,salary,department,\n" +
+                    "joining_date) values ('Paru',300000,\n" +
+                    "'cs-engg','2019-12-09'),('Praju',500000,\n" +
+                    "'civil-engg','2018-09-06'),('Pratham',600000,\n" +
+                    "'ee-engg','2017-11-08'),('Chinnu',900000,\n" +
+                    "'ec-engg','2019-03-07') ");
             ResultSet resultSet =statement.executeQuery("select * from employee");
             while(resultSet.next()){
                 System.out.println("id:"+resultSet.getInt("id"));
