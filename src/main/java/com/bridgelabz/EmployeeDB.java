@@ -18,6 +18,7 @@ public class EmployeeDB {
             System.out.println("connecting to database:" + jdbcURL);
             con = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("connection done successful!!" + con);
+
 //            Statement statement=con.createStatement();
 //            statement.execute("alter table employee add column Gender varchar(7)");
 //            ResultSet resultSet =statement.executeQuery("select * from employee");
@@ -31,6 +32,12 @@ public class EmployeeDB {
             PreparedStatement preparedStatement=con.prepareStatement("alter table employee add column " +
                     "Gender varchar(7)");
             ResultSet resultSet=preparedStatement.executeQuery("select * from employee");
+
+            Statement statement=con.createStatement();
+//            statement.execute("select name,salary from employee where name='Praju' ");
+            ResultSet resultSet =statement.executeQuery("select * from employee where \n" +
+                    "joining_date between '2017-11-08' and '2018-12-09'");
+
             while(resultSet.next()){
                 System.out.println("id:"+resultSet.getInt("id"));
                 System.out.println("name:"+resultSet.getString("name"));
