@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class DbDemo {
+public class EmployeeDB {
     public static void main(String[] args) {
         String jdbcURL = "jdbc:mysql://127.0.0.1:3306/payroll?useSSL=false";
         String username = "root";
@@ -23,7 +23,7 @@ public class DbDemo {
             System.out.println("connection done successful!!" + con);
             Statement statement=con.createStatement();
             //statement.executeUpdate("update addressBook set Type='Family,Friend' where firstname='Paarth' ");
-            ResultSet resultSet =statement.executeQuery("select * from employee ");
+            ResultSet resultSet =statement.executeQuery("select * from employee");
             while(resultSet.next()){
                 System.out.println("id:"+resultSet.getInt("id"));
                 System.out.println("name:"+resultSet.getString("name"));
