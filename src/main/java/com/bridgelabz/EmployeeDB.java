@@ -18,7 +18,6 @@ public class EmployeeDB {
             System.out.println("connecting to database:" + jdbcURL);
             con = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("connection done successful!!" + con);
-
         } catch (Exception e) {
             //  e.printStackTrace();
         }
