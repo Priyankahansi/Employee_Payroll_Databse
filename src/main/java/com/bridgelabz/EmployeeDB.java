@@ -20,34 +20,16 @@ public class EmployeeDB {
             System.out.println("connection done successful!!" + con);
 
             Statement statement=con.createStatement();
-            statement.execute("update employee set Gender='male' where id  between 1 and 3");
-            ResultSet resultSet =statement.executeQuery("select * from employee");
-
-//            Statement statement=con.createStatement();
-//            statement.execute("alter table employee add column Gender varchar(7)");
-//            ResultSet resultSet =statement.executeQuery("select * from employee");
-//            while(resultSet.next()){
-//                System.out.println("id:"+resultSet.getInt("id"));
-//                System.out.println("name:"+resultSet.getString("name"));
-//                System.out.println("salary:"+resultSet.getDouble("salary"));
-//                System.out.println("department:"+resultSet.getString("department"));
-//                System.out.println("Joining_Date:"+resultSet.getDate("Joining_Date"));
-//            }
-            PreparedStatement preparedStatement=con.prepareStatement("alter table employee add column " +
-                    "Gender varchar(7)");
-            ResultSet resultSet=preparedStatement.executeQuery("select * from employee");
-
-            Statement statement=con.createStatement();
-//            statement.execute("select name,salary from employee where name='Praju' ");
-            ResultSet resultSet =statement.executeQuery("select * from employee where \n" +
-                    "joining_date between '2017-11-08' and '2018-12-09'");
+            statement.execute("create table employee(id int auto_increment,name varchar(30),\n" +
+                    "salary double,department varchar(30),Joining_Date date,\n" +
+                    "primary key(id))");
+            ResultSet resultSet =statement.executeQuery("desc employee");
             while(resultSet.next()){
                 System.out.println("id:"+resultSet.getInt("id"));
                 System.out.println("name:"+resultSet.getString("name"));
                 System.out.println("salary:"+resultSet.getDouble("salary"));
-                System.out.println("department:"+resultSet.getString("department"));
-                System.out.println("Joining_Date:"+resultSet.getDate("Joining_Date"));
-                System.out.println("Gender:"+resultSet.getString("Gender"));
+               System.out.println("department:"+resultSet.getString("department"));
+               System.out.println("Joining_Date:"+resultSet.getDate("Joining_Date"));       
             }
         } catch (Exception e) {
             //  e.printStackTrace();
